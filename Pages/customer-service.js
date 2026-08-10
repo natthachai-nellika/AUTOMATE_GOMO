@@ -5,9 +5,9 @@ exports.CustomerServicePage = class CustomerServicePage {
   constructor(page) {
     this.page = page;
     this.fieldText = page.getByPlaceholder('พิมพ์ข้อความมาได้เลย');
-    this.buttonYes = page.page.getByText('ใช่');
-    this.buttonNo = page.page.getByText('ไม่');
-    this.buttonGo = page.page.locator('div.ant-form-item').getByRole('button', { type: 'submit' });
+    this.buttonYes = page.getByText('ใช่');
+    this.buttonNo = page.getByText('ไม่');
+    this.buttonGo = page.locator('div.ant-form-item').getByRole('button', { type: 'submit' });
   }
 
   async inputNetType (NetType){
@@ -28,5 +28,5 @@ exports.CustomerServicePage = class CustomerServicePage {
     await this.buttonNo.click();
   }
 
-  
+
 }
