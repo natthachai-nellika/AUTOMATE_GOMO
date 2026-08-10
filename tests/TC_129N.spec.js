@@ -8,12 +8,9 @@ const { CustomerServicePage } = require('../Pages/customer-service')
 const { GomoPage } = require('../Pages/gomo-direct-page')
 
 const testData = {
-    firstname: 'Natthachai',
-    lastname: 'Sirinai',
-    zipcode: '10700',
-    priceA: '$29.99',
-    priceB: '$9.99',
-    priceC: '$15.99',
+    MobileNo: '0937056764',
+    NetType: '^Test_PBL_NET$',
+    
 }
 
 const logAndTimeStamp = message => {
@@ -52,7 +49,21 @@ test.describe('TC_129N.spec', async () => {
             await gomo.gotoGomoPage();
             await page.waitForTimeout(3000)
             await commonTool.takeScreenshot(page, 'GOMO', '1-GOMO Page')
-
+            await gomoCustomerService.inputMobileNo(testData.MobileNo);
+            await page.waitForTimeout(3000)
+            await commonTool.takeScreenshot(page, 'GOMO', '2-Field Mobile No')
+            await gomoCustomerService.clickButtonGo();
+            await page.waitForTimeout(3000)
+            await commonTool.takeScreenshot(page, 'GOMO', '3-Click Button Go')
+  })
+        await test.step('Gomo Customer Service Page', async () => {
+            logAndTimeStamp('Gomo Customer Service Page')
+            await customerService.inputNetType(testData.NetType);
+            await page.waitForTimeout(3000)
+            await customerService.clickButtonGo();
+            await commonTool.takeScreenshot(page, 'GOMO', '4-Net Type')
+            
+            
   })
 
 }
