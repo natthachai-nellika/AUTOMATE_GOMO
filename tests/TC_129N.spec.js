@@ -6,10 +6,11 @@ const { CommonTool } = require('../Common/common-page')
 const { GomoCustomerServicePage } = require('../Pages/gomo-customer-service')
 const { CustomerServicePage } = require('../Pages/customer-service')
 const { GomoPage } = require('../Pages/gomo-direct-page')
+const { asyncWrapProviders } = require('async_hooks')
 
 const testData = {
-    MobileNo: '0937056764',
-    NetType: '^Test_PBL_NET$',
+    MobileNo: '0937056767',
+    NetType: '^Test_PBLM_VOICE$',
     
 }
 
@@ -61,8 +62,16 @@ test.describe('TC_129N.spec', async () => {
             await customerService.inputNetType(testData.NetType);
             await page.waitForTimeout(3000)
             await customerService.clickButtonGo();
+            await page.waitForTimeout(10000)
             await commonTool.takeScreenshot(page, 'GOMO', '4-Net Type')
-            
+            await customerService.clickButtonYes();
+            await page.waitForTimeout(10000)
+            await commonTool.takeScreenshot(page, 'GOMO', '5-Click Yes')
+            await customerService.clickButonSubmit();
+            await page.waitForTimeout(10000)
+            await gomo.gotoInternetProblemPage2();
+            await page.waitForTimeout(10000)
+            await commonTool.takeScreenshot(page, 'GOMO', '6-ProblemPage')
             
   })
 

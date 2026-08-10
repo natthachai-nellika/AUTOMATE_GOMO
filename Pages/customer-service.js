@@ -6,8 +6,9 @@ exports.CustomerServicePage = class CustomerServicePage {
     constructor(page) {
         this.page = page;
         this.fieldText = page.getByPlaceholder('พิมพ์ข้อความมาได้เลย');
-        this.buttonYes = page.getByText('ใช่');
-        this.buttonNo = page.getByText('ไม่');
+        this.buttonYes = page.locator('div', { hasText: /^ใช่$/ });
+        this.buttonNo = page.locator('div', { hasText: /^ไม่ใช่$/ });
+        this.buttonSubmit = page.getByText('กดที่นี่เลยค่ะ', { exact: true });
         this.buttonGo = page.locator('div.ant-form-item').getByRole('button', { type: 'submit' });
     }
 
@@ -31,4 +32,9 @@ exports.CustomerServicePage = class CustomerServicePage {
         await expect(this.buttonNo).toBeVisible();
         await this.buttonNo.click();
     }
+
+    async clickButonSubmit() {
+        await expect(this.buttonSubmit).toBeVisible();
+        await this.buttonSubmit.click();
+}
 }
