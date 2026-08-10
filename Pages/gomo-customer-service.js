@@ -5,8 +5,8 @@ exports.GomoCustomerServicePage = class GomoCustomerServicePage {
   constructor(page) {
     this.page = page;
     this.fieldMobileNo = page.getByPlaceholder('Ex.0812345678')
-    this.buttonGo = page.page.getByRole('button', { name: 'GO!' });
-    this.checkVisableGomoContract = page.getByText("สวัสดีค่ะ ยินดีต้อนรับสู่ GOMO!");
+    this.buttonGo = page.getByRole('button', { name: 'GO!' });
+    this.checkVisableGomoContract = page.getByText('สวัสดีค่ะ ยินดีต้อนรับสู่ GOMO!');
   }
 
   async inputMobileNo (mobileNo){
@@ -18,4 +18,5 @@ exports.GomoCustomerServicePage = class GomoCustomerServicePage {
     await this.buttonGo.click();
     await expect(this.checkVisableGomoContract).toBeVisible();
   }
+  
 }
