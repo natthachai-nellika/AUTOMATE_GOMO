@@ -51,7 +51,6 @@ exports.NetPage = class NetPage {
         await minuteOption.scrollIntoViewIfNeeded();
         await minuteOption.click({ force: true });
 
-        // 4. กดปุ่ม "ตกลง" ใน TimePicker Pop-up
         const btnOk = this.page.locator('.ant-picker-ok button');
         await btnOk.waitFor({ state: 'visible', timeout: 5000 });
         await btnOk.click();
