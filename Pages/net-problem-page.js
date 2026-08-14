@@ -70,7 +70,9 @@ exports.NetPage = class NetPage {
     }
 
     async clickLinkApp() {
-        const linkClick = this.page.locator('strong.modal-label-status-network-used-normally').filter({ hasText: 'คลิก' });
+        const linkClick = this.page.locator('strong.modal-label-status-network-used-normally')
+            .filter({ hasText: 'คลิก' })
+            .first();
 
         const [appTab] = await Promise.all([
             this.page.waitForEvent('popup'),
